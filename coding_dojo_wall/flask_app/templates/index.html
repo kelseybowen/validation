@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="main">
+        <div class="left-container">
+            <h1>Register</h1>
+            {% with messages = get_flashed_messages(category_filter=["registration"]) %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <p>{{message}}</p>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            <form action="/register" method="post">
+                <div class="form_inputs">
+                    <label for="first_name">First Name:</label>
+                    <br>
+                    <input type="text" name="first_name" required value="{{session['first_name']}}">
+                </div>
+                <div class="form_inputs">
+                    <label for="last_name">Last Name:</label>
+                    <br>
+                    <input type="text" name="last_name" required value="{{session['last_name']}}">
+                </div>
+                <div class="form_inputs">
+                    <label for="r_email">Email:</label>
+                    <br>
+                    <input type="text" name="r_email" required value="{{session['email']}}">
+                </div>
+                <div class="form_inputs">
+                    <label for="r_password">Password:</label>
+                    <br>
+                    <input type="text" name="r_password" required>
+                </div>
+                <div class="form_inputs">
+                    <label for="confirm_password">Confirm Password:</label>
+                    <br>
+                    <input type="text" name="confirm_password" required>
+                </div>
+                <button type="submit">Register</button>
+            </form>
+        </div>
+        <div class="right-container">
+            <h1>Login</h1>
+            {% with messages = get_flashed_messages(category_filter=["login"]) %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <p>{{message}}</p>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            <form action="/login" method="post">
+                <div class="form_inputs">
+                    <label for="l_email">Email:</label>
+                    <br>
+                    <input type="text" name="l_email" required>
+                </div>
+                <div class="form_inputs">
+                    <label for="l_password">Password:</label>
+                    <br>
+                    <input type="text" name="l_password" required>
+                </div>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

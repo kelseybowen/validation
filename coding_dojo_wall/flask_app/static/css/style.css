@@ -1,0 +1,47 @@
+* {
+    margin: 10px;
+    padding: 0;
+}
+
+.main {
+    display: flex;
+}
+
+.left-container, .right-container {
+    background-color: grey;
+    color: white;
+    padding: 20px;
+    margin: 5%;
+}
+
+.header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+button {
+    margin-top: 20px;
+    box-shadow: 1px 1px;
+    padding: 5px;
+}
+
+hr {
+    margin: 10px 50px;
+    border: 2px black solid;
+}
+
+.wall-content {
+        margin: auto;
+        width: 50%;
+        text-align: center;
+        padding: 10px;
+}
+
+.post {
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 20px;
+}
+

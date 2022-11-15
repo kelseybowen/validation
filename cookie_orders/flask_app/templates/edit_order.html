@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <title>Change Order</title>
+</head>
+<body>
+    <div class="main">
+        <div class="header">
+            <h1>Change Order</h1>
+            <a href="/cookies">Back to purchases</a>
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <p>{{message}}</p>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        </div>
+        <div class="container">
+            <form action="/update_order/{{ order.id }}" method="post">
+                <table class=" table table-dark table-striped">
+                    <tr>
+                        <td><label for="customer_name">Name:</label></td>
+                        <td><input type="text" name="customer_name" value="{{ order.customer_name }}" required></td>
+                    </tr>
+                    <tr>
+                        <td><label for="cookie_type">Cookie Type:</label></td>
+                        <td><input type="text" name="cookie_type" value="{{ order.cookie_type }}" required></td>
+                    </tr>
+                    <tr>
+                        <td><label for="num_of_boxes">Number of Boxes:</label></td>
+                        <td><input type="number" name="num_of_boxes" value="{{ order.num_of_boxes }}" required></td>
+                    </tr>
+                </table>
+                <button type="submit">Log</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

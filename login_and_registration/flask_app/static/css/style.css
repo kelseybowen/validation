@@ -1,0 +1,21 @@
+.main {
+    display: flex;
+    margin: auto;
+    width: 50%;
+    text-align: center;
+    padding: 10px;
+}
+
+.left-container, .right-container {
+    background-color: grey;
+    color: white;
+    padding: 20px;
+    margin: 5%;
+}
+
+button {
+    margin-top: 20px;
+    box-shadow: 1px 1px;
+    background-color: rgb(38, 148, 150);
+}
+

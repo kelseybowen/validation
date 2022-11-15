@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <title>Success</title>
+</head>
+<body>
+    <div class="main-wall">
+        <div class="header">
+            <h3>Coding Dojo Wall</h3>
+            <h3>Welcome, {{ session["first_name"] }}</h3>
+            <a href="/logout">logout</a>
+        </div>
+        <hr>
+        <div class="wall-content">
+            <h3>What's on your mind? Create a new post:</h3>
+            {% with messages = get_flashed_messages(category_filter=["post"]) %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <p>{{message}}</p>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            <form action="/publish_post" method="post">
+                <textarea name="new_post" id="new_post" cols="50" rows="5"></textarea>
+                <br>
+                <button type="submit">publish</button>
+            </form>
+        </div>
+        <hr>
+        <div class="community-posts">
+            <h2>All Community Posts</h2>
+            {% for post in all_posts %}
+            <div class="post">
+                <div class="user_post">
+                    <h6><strong>{{post.user_first_name}} - {{post.date[0]}}</strong></h6>
+                    <p>{{post.content}}</p>
+                </div>
+                <div class="del_button">
+                    {% if post.user_first_name == session["first_name"] %}
+                        <!-- <form action="/delete_post/{{ post.id }}" method="post"><button>Delete</button></form> -->
+                        <a href="/delete_post/{{ post.id }}">Delete</a>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

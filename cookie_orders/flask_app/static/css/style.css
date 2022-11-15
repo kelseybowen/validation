@@ -1,0 +1,24 @@
+.main {
+    padding: 5%;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* table {
+    padding: 3%;
+}
+
+td {
+    padding: 2%;
+} */
+
